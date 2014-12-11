@@ -1,0 +1,13 @@
+{
+	"name": "cesnet/module-nemea-bundle",
+	"type": "symfony-bundle",
+	"license": "GPL",
+	"autoload": {
+		"psr-4": {
+			"FIT\\Bundle\\ModuleNemeaBundle\\": ""
+		}
+	},
+	"require": {
+		"symfony/http-kernel": "~2.3"
+	}
+}
