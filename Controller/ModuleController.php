@@ -41,6 +41,7 @@ use FIT\NetopeerBundle\Controller\ModuleControllerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ModuleController extends \FIT\NetopeerBundle\Controller\ModuleController implements ModuleControllerInterface
 {
@@ -51,9 +52,18 @@ class ModuleController extends \FIT\NetopeerBundle\Controller\ModuleController i
 	 */
 	public function moduleAction($key, $module = null, $subsection = null)
 	{
-		$this->prepareDataForModuleAction("FITModuleNemeaBundle", $key, $module, $subsection);
+		$res = $this->prepareDataForModuleAction("FITModuleNemeaBundle", $key, $module, $subsection);
 
-		return $this->getTwigArr();
+		/* parent module did not prepares data, but returns redirect response,
+		 * so we will follow this redirect
+		 */
+		if ($res instanceof RedirectResponse) {
+			return $res;
+
+			// data were prepared correctly
+		} else {
+			return $this->getTwigArr();
+		}
 	}
 
 }
