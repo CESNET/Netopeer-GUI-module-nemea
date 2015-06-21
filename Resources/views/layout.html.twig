@@ -40,19 +40,25 @@ if advised of the possibility of such damage.
 
 {% block moduleJavascripts %}
 	{% javascripts
-	'@FITModuleNemeaBundle/Resources/public/js/*'
-	output='js/compiled/module-nemea.js'
+	'@FITModuleNemeaBundle/Resources/public/js/jquery-ui.min.js'
+	'@FITModuleNemeaBundle/Resources/public/js/library/joint.min.js'
+	'@FITModuleNemeaBundle/Resources/public/js/library/joint.shapes.devs.min.js'
+	'@FITModuleNemeaBundle/Resources/public/js/library/joint.layout.DirectedGraph.min.js'
+	'@FITModuleNemeaBundle/Resources/public/js/module-nemea.js'
+	output	='js/compiled/module-nemea.js'
 	%}
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 {% endblock %}
 
 {% block moduleStylesheet %}
 	{% stylesheets
-	'bundles/fitmodulexml/style/*'
+	'bundles/fitmodulenemeabundle/style/*'
 	filter='cssrewrite'
 	output='css/module-nemea.css'
 	%}
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
 {% endblock %}

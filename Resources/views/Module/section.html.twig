@@ -44,31 +44,35 @@ if advised of the possibility of such damage.
 {% block state %}
 	{% block singleContent %}
 		{% if configSingleContent is defined %}
-
 			{{ configSingleContent|raw }}
 
 		{% else %}
 
-			<h1 class="left">{% if stateSectionTitle is defined %}{{ stateSectionTitle }}{% else %}Config &amp; State data{% endif %}</h1>
-			{% if stateArr is defined and not(stateArr is empty) %}
-				<hr class="cleaner" />
-				<pre>
-					{{ stateArr.asXml|trim }}
-				</pre>
+			{% if stateArr is defined %}
+			<div id="nemeagui">       
+				<span id="nemeagui-buttons">
+				 <!-- <div id="test"></div> -->
+	                <button class="myBottums" id="nemeaGUI-Save">Save</button>
+	                <button class="myBottums" id="nemeaGUI-remove">remove</button>
+	                <button class="myBottums" id="nemeaGUI-reload">reload GUI</button> 
+	                <button class="myBottums" id="nemeaGUI-layout">layout</button>
+	            </span>
+	            <div class="nemeaGUI-scroll">
+	                <div id="graph"></div>
+	            </div>
+	            <div id="nemeaGUI-container" class="nemeaGUI-menu-scroll">
+	                <div id="info-panel">      	
+	                	<textarea rows="5" cols="50" id="info-input" class="non-modify"></textarea>
+	                </div>
+	                <div id="menu"></div>
+	            </div>
+	        </div>
 			{% endif %}
 
 		{% endif %}
 	{% endblock singleContent %}
 {% endblock state %}
 
-{% block config %}
-	<h1 class="left">{% if configSectionTitle is defined %}{{ configSectionTitle }}{% else %}Config data only{% endif %}</h1>
-
-	{% if configArr is defined and not(configArr is empty) %}
-		<hr class="cleaner" />
-		<pre>
-			{{ configArr.asXml|trim }}
-		</pre>
-	{% endif %}
+{% block config %}	
 {% endblock config %}
 
